@@ -29,7 +29,7 @@ public class WindowPopUpModal {
 		
 		
 		///Very important!!!!
-		Set<String> windowControl = driver.getWindowHandles();  //'Set' (it's like array but better) we use for avoiding duplication of windows (otherwise we can't identify window to handle in further
+		Set<String> windowControl = driver.getWindowHandles();   //'Set' (it's like array but better) we use for avoiding duplication of windows (otherwise we can't identify window to handle in further
 		System.out.println("Here is 'attribute' of two windows " + windowControl);
 		Iterator<String> iterator = windowControl.iterator();    //'Iterator' we use to switch between windows (>[w1]< [w2]) switching occur by using command "next"
 		
@@ -47,8 +47,7 @@ public class WindowPopUpModal {
 		
 		driver.close();                                //don't forget to close child window!!
 		
-		driver.switchTo().window(parentWindow);            //switch back to parent window
-		
+		driver.switchTo().window(parentWindow);		   //switch back to parent window
 		WebElement FacebookButton = driver.findElement(By.xpath("//a[text()=' Like us On Facebook ']"));
 		FacebookButton.click();
 		
@@ -85,15 +84,39 @@ public class WindowPopUpModal {
 		Set<String> windowsMulti = driver.getWindowHandles();
 		Iterator<String> iterator3 = windowsMulti.iterator();
 		String newNewParentWindow = iterator3.next();
-		String newInstWindow = iterator3.next();
 		String newFacebookWindow = iterator3.next();
+		String newInstWindow = iterator3.next();
 		
-		System.out.println("This are multi window " + windowsMulti);
+		System.out.println("Multi window button opened 2 windows " + windowsMulti);
 		
+		driver.switchTo().window(newFacebookWindow);
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		System.out.println("Now am on 1 of 2 opened windows " + driver.getCurrentUrl());
+		Thread.sleep(2000);
+		
+		logInFace = driver.findElement(By.xpath("(//a[contains(@aria-label,'Accessible')])[1]"));
+		logInFace.click();
+		Thread.sleep(1000);
+		
+		driver.close();
 		driver.switchTo().window(newInstWindow);
 		
+		driver.manage().window().maximize();
+		System.out.println("Now am on 2 of 2 windows");
+		driver.findElement(By.xpath("(//button[@class='_acan _acap _acat'])[2]")).click();
 		
-		//driver.quit();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		System.out.println("Now I'm here " + driver.getCurrentUrl());
+		Thread.sleep(2000);
+		
+		driver.close();
+		
+		driver.switchTo().window(newNewParentWindow);
+		Thread.sleep(2000);
+		
+		driver.quit();
 		
 		
 	}

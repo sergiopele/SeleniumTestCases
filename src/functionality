@@ -1,0 +1,47 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+TO SCROLL PAGE ----------------------------------------------------------------------------
+(1)
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("arguments[0].scrollIntoView();", locationOfElement);               <----  acting
+
+(2)
+Actions at = new Actions(driver);
+at.sendKeys(Keys.PAGE_DOWN).build().perform();                  <--- acting
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+IMPLICIT WAIT -----------------------------------------------------------------------------
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);             <--- acting
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+EXPLICIT WAIT  ---------------------------------------------------------------------------
+WebDriverWait wait = new WebDriverWait(driver, 30);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.locator("locationOfElement")));                 <--- acting
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+DROP DOWN WINDOW  ------------------------------------------------------------------------
+Select dropDown = new Select(locationOfElement(must be "select");
+dropDown.selectByIndex(2);                                              <--- acting
+dropDown.selectByVisualText("Ukraine")
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+SWITCH TO NEW TAB  ------------------------------------------------------------------------
+ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+driver.switchTo().window(tabs.get(1));                                  <---acting
+
+driver.switchTo().window((tabs.get(0)));               <---parentWindow
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+CHECK IS ELEMENT PRESENT ON PAGE  --------------------------------------------------------
+try {
+			boolean isPresentItemDescription = driver.findElement(By.location("elementLocation")).isDisplayed();
+			if (isPresentItemDescription) {
+				System.out.println("Section is present --- Passed");
+			}
+		} catch (NoSuchElementException e1) {
+			System.out.println("element does NOT exist");
+		}
