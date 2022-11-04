@@ -103,3 +103,10 @@ WebElement resizable = driver.findElement(location));
 HOW TO SLIDE SLIDER   --------------------------------------------------------------------
 Actions action = new Actions(driver);
 		action.dragAndDropBy(LOCATION OF SLIDER,X,Y).perform();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO PERFORM RIGHT CLICK    ------------------------------------------------------------
+action.contextClick(elementLocation).perform();
+
+if u do combination of actions use  -----> .build().perform();

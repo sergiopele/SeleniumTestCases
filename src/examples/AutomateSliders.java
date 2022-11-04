@@ -25,5 +25,6 @@ public class AutomateSliders {
 		action.dragAndDropBy(greenSlider,-47,125).perform();
 		action.dragAndDropBy(blurSlider,-17,171).perform();
 		
+		action.contextClick(redSlider).perform();
 	}
 }
