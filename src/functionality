@@ -110,3 +110,9 @@ HOW TO PERFORM RIGHT CLICK    --------------------------------------------------
 action.contextClick(elementLocation).perform();
 
 if u do combination of actions use  -----> .build().perform();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO PERFORM KEYBOARD EVENT(COMBINATION)    --------------------------------------------
+action.keyDown(textSource, Keys.COMMAND).sendKeys("a").sendKeys("c").build().perform(); ---WINDOWS (CONTROL)
+action.keyDown(destinationArea, Keys.COMMAND).sendKeys("a").sendKeys("v").build().perform();
