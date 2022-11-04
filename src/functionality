@@ -72,3 +72,21 @@ HOW TO DO ACTIONS BY MOUSE  ----------------------------------------------------
 Actions action = new Actions(driver);
 		action.moveToElement(location of element).perform();
 		.build(use for combination of actions)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO SWITCH FRAME  --------------------------------------------------------------------
+WebElement frame = driver.findElement(location of frame (<iframe>));
+		driver.switchTo().frame(frame);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO DO MOUSE ACTION  ------------------------------------------------------------------
+Actions action = new Actions(driver);
+		action.moveToElement(locator).perform();
+		action.click().perform();
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO DRAG AND PROP ELEMENT  ------------------------------------------------------------
+Actions actions = new Actions(driver);
+		actions.dragAndDrop(draggableElement,dropZone).perform();

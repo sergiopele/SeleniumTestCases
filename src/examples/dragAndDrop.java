@@ -6,21 +6,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-
-
-public class MouseOver {
+public class dragAndDrop {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", "/Users/sergiopele/Documents/extra_library_for_intellij/chromedriver");
 		WebDriver driver = new ChromeDriver();
-		
-		driver.get("https://www.ebay.com/");
 		driver.manage().window().maximize();
 		
-		WebElement artCategory = driver.findElement(By.xpath("(//a[text()='Collectibles & Art'])[2]"));
+		driver.get("https://jqueryui.com/droppable/");
 		
-		Actions action = new Actions(driver);
-		action.moveToElement(artCategory).perform();
-		action.click().perform();
+		WebElement frame = driver.findElement(By.className("demo-frame"));
+		driver.switchTo().frame(frame);
 		
+		WebElement draggableElement = driver.findElement(By.xpath("//div[@id='draggable']"));
+		WebElement dropZone = driver.findElement(By.id("droppable"));
+		
+		Actions actions = new Actions(driver);
+		actions.dragAndDrop(draggableElement,dropZone).perform();
 	}
 }
