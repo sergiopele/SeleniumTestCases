@@ -12,9 +12,9 @@ public class dragAndDrop {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		
-		//driver.get("https://jqueryui.com/droppable/");
+		driver.get("https://jqueryui.com/droppable/");
 		
-		/*WebElement frame = driver.findElement(By.className("demo-frame"));
+		WebElement frame = driver.findElement(By.className("demo-frame"));
 		driver.switchTo().frame(frame);
 		
 		WebElement draggableElement = driver.findElement(By.xpath("//div[@id='draggable']"));
@@ -23,7 +23,7 @@ public class dragAndDrop {
 		Actions actions = new Actions(driver);
 		actions.dragAndDrop(draggableElement,dropZone).perform();
 		driver.switchTo().parentFrame();
-		*/
+		
 		
 		
 		driver.get("https://jqueryui.com/resizable/");

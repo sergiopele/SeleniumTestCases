@@ -97,3 +97,9 @@ HOW TO RESIZE ELEMENT (RESIZABLE)  ---------------------------------------------
 WebElement resizable = driver.findElement(location));
 		Actions actions1 = new Actions(driver);
 		actions1.dragAndDropBy(resizable,200,150).perform();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO SLIDE SLIDER   --------------------------------------------------------------------
+Actions action = new Actions(driver);
+		action.dragAndDropBy(LOCATION OF SLIDER,X,Y).perform();
