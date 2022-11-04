@@ -87,6 +87,13 @@ Actions action = new Actions(driver);
 		action.click().perform();
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO DRAG AND PROP ELEMENT  ------------------------------------------------------------
+HOW TO DRAG AND DROP ELEMENT  ------------------------------------------------------------
 Actions actions = new Actions(driver);
 		actions.dragAndDrop(draggableElement,dropZone).perform();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+HOW TO RESIZE ELEMENT (RESIZABLE)  -------------------------------------------------------
+WebElement resizable = driver.findElement(location));
+		Actions actions1 = new Actions(driver);
+		actions1.dragAndDropBy(resizable,200,150).perform();
