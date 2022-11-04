@@ -15,7 +15,9 @@ public class AutoSuggestionDropDown {
 		/*
 		Buy ticket from YYZ Toronto-Pearson Int.  - to
 		LON All airports, London, , United Kingdom
-		(Econ0omy class) Date March 12, back after 2 week
+		(Econ0omy class)
+		for 2 passengers (1 adult, 1 child), Date March 12, back after 2 week
+		
 		
 		 */
 		
@@ -57,8 +59,26 @@ public class AutoSuggestionDropDown {
 			nextMonthButton.click();
 		}
 		//chose date 12
-		WebElement datedepart = driver.findElement(By.xpath("//div[@data-att='day-2023-03-12']"));
-		datedepart.click();
+		WebElement dateDepart = driver.findElement(By.xpath("//div[@data-att='day-2023-03-12']"));
+		dateDepart.click();
+		
+		//chose 26 (2 week since 12)
+		WebElement returnDate = driver.findElement(By.xpath("//div[@data-att='day-2023-03-26']"));
+		returnDate.click();
+		
+		//select quantity of passengers
+		//click on "Passenger" button
+		WebElement passengersButton = driver.findElement(By.xpath("//button[contains(@aria-label,'Press Enter or Spacebar')]"));
+		passengersButton.click();
+		
+		//By default there 1 adult already selected, add 1 child
+		WebElement childOption = driver.findElement(By.xpath("(//button[@aria-label='Increase'])[3]"));
+		childOption.click();
+		
+		//click on "Find" button
+		WebElement findButton = driver.findElement(By.xpath("//button[@data-att='search']"));
+		findButton.click();
+		
 		
 		
 		
