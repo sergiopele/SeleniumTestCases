@@ -45,3 +45,15 @@ try {
 		} catch (NoSuchElementException e1) {
 			System.out.println("element does NOT exist");
 		}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+JAVASCRIPT ALERTS  -----------------------------------------------------------------------
+Alert alert2 = driver.switchTo().alert();
+alert2.accept();                                    <--- acting
+alert2.dismiss();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+IS DROPDOWN IS MULTISELECT  --------------------------------------------------------------
+boolean isMultiselect = webElement.isMultiple();
