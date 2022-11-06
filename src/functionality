@@ -21,6 +21,14 @@ wait.until(ExpectedConditions.visibilityOfElementLocated(By.locator("locationOfE
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
+FLUENT WAIT  ---------------------------------------------------------------------------
+Wait<WebDriver>wait = new FluentWait<WebDriverWait>(driver)
+.withTimeout(Duration.ofSeconds(20))
+.pollingEvery(Duration.ofSeconds(2))
+.ignoring(NoSuchElements.class);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 DROP DOWN WINDOW  ------------------------------------------------------------------------
 Select dropDown = new Select(locationOfElement(must be "select");
 dropDown.selectByIndex(2);                                              <--- acting
