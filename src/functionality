@@ -25,6 +25,7 @@ FLUENT WAIT  -------------------------------------------------------------------
 Wait<WebDriver>wait = new FluentWait<WebDriverWait>(driver)
 .withTimeout(Duration.ofSeconds(20))
 .pollingEvery(Duration.ofSeconds(2))
+.withMessage("your message")<-optional
 .ignoring(NoSuchElements.class);
 
 
