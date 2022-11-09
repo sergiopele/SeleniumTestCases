@@ -77,51 +77,68 @@ ChromeOptions c = new ChromeOptions();
 		WebDriver driver = new ChromeDriver(c);
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO DO ACTIONS BY MOUSE  --------------------------------------------------------------
+ACTIONS BY MOUSE  --------------------------------------------------------------
 Actions action = new Actions(driver);
 		action.moveToElement(location of element).perform();
 		.build(use for combination of actions)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO SWITCH FRAME  --------------------------------------------------------------------
+SWITCH FRAME  --------------------------------------------------------------------
 WebElement frame = driver.findElement(location of frame (<iframe>));
 		driver.switchTo().frame(frame);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO DO MOUSE ACTION  ------------------------------------------------------------------
+MOUSE ACTION  ------------------------------------------------------------------
 Actions action = new Actions(driver);
 		action.moveToElement(locator).perform();
 		action.click().perform();
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO DRAG AND DROP ELEMENT  ------------------------------------------------------------
+DRAG AND DROP ELEMENT  ------------------------------------------------------------
 Actions actions = new Actions(driver);
 		actions.dragAndDrop(draggableElement,dropZone).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO RESIZE ELEMENT (RESIZABLE)  -------------------------------------------------------
+RESIZE ELEMENT (RESIZABLE)  -------------------------------------------------------
 WebElement resizable = driver.findElement(location));
 		Actions actions1 = new Actions(driver);
 		actions1.dragAndDropBy(resizable,200,150).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO SLIDE SLIDER   --------------------------------------------------------------------
+SLIDE SLIDER   --------------------------------------------------------------------
 Actions action = new Actions(driver);
 		action.dragAndDropBy(LOCATION OF SLIDER,X,Y).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO PERFORM RIGHT CLICK    ------------------------------------------------------------
+PERFORM RIGHT CLICK    ------------------------------------------------------------
 action.contextClick(elementLocation).perform();
 
 if u do combination of actions use  -----> .build().perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-HOW TO PERFORM KEYBOARD EVENT(COMBINATION)    --------------------------------------------
+PERFORM KEYBOARD EVENT(COMBINATION)    --------------------------------------------
 action.keyDown(textSource, Keys.COMMAND).sendKeys("a").sendKeys("c").build().perform(); ---WINDOWS (CONTROL)
 action.keyDown(destinationArea, Keys.COMMAND).sendKeys("a").sendKeys("v").build().perform();
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+JavaScriptExecutor -----------------------------------------------------------------------
+String script = "return document.title";
+String title = (String) js.executeScript(script);     <----- TO GET TITLE
+
+js.executeScript("arguments[0].style.border='10px solid green'",ELEMENT LOCATION ) <---HIGH LIGHT ELEMENT
+
+js.executeScript("arguments[0].click();", element); <--- CLICK() BY JAVASCRIPT
+
+js.executeScript("alert('Welcome to Hell');");    <----GENERATE ALERT WINDOWS
+
+js.executeScript("window.scrollBy(0,600)");      <----Vertical scroll down by 600  pixels
+
+js.executeScript("window.location = 'U   R   L'");	<----NAVIGATE TO NEW PAGE
+
