@@ -23,7 +23,5 @@ public class Screenshot {
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(SrcFile,new File(".//screenshot//"+formatDate+" .png"));
 		
-		
-		
 	}
 }

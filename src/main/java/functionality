@@ -150,3 +150,16 @@ String formatDate = currentDate.toString().replace(" ","-").replace(":","-");
 File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);     <----SOURCE
 FileUtils.copyFile(SrcFile,new File(".//screenshot//"+formatDate+" .png"));  <----SCREENSHOT LOCATION (set neme of each .png with date
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+SSL_Certificate ------------------------------------------------------------------------------
+//Global profile
+DesiredCapabilities dc = new DesiredCapabilities();
+dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
+dc.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
+
+//profile for Chrome driver
+ChromeOptions cOptioon =new ChromeOptions();
+cOptioon.merge(dc);
+WebDriver driver = new ChromeDriver(cOptioon);
+driver.get("https://expired.badssl.com/");
