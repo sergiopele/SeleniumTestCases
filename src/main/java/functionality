@@ -71,53 +71,52 @@ boolean isMultiselect = webElement.isMultiple();
 //////////////////////////////////////////////////////////////////////////////////////////
 OPEN BROWSER IN INCOGNITO MODE  ----------------------------------------------------------
 ChromeOptions c = new ChromeOptions();
-		c.addArguments("incognito");
+c.addArguments("incognito");
 
-		System.setProperty("webdriver.chrome.driver", "/Users/sergiopele/Documents/extra_library_for_intellij/chromedriver");
-		WebDriver driver = new ChromeDriver(c);
+System.setProperty("webdriver.chrome.driver", "/Users/sergiopele/Documents/extra_library_for_intellij/chromedriver");
+WebDriver driver = new ChromeDriver(c);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 ACTIONS BY MOUSE  --------------------------------------------------------------
 Actions action = new Actions(driver);
-		action.moveToElement(location of element).perform();
-		.build(use for combination of actions)
+action.moveToElement(location of element).perform();
+	.build(use for combination of actions)
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 SWITCH FRAME  --------------------------------------------------------------------
 WebElement frame = driver.findElement(location of frame (<iframe>));
-		driver.switchTo().frame(frame);
+driver.switchTo().frame(frame);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 MOUSE ACTION  ------------------------------------------------------------------
 Actions action = new Actions(driver);
-		action.moveToElement(locator).perform();
-		action.click().perform();
+action.moveToElement(locator).perform();
+action.click().perform();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 DRAG AND DROP ELEMENT  ------------------------------------------------------------
 Actions actions = new Actions(driver);
-		actions.dragAndDrop(draggableElement,dropZone).perform();
+actions.dragAndDrop(draggableElement,dropZone).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 RESIZE ELEMENT (RESIZABLE)  -------------------------------------------------------
 WebElement resizable = driver.findElement(location));
-		Actions actions1 = new Actions(driver);
-		actions1.dragAndDropBy(resizable,200,150).perform();
+Actions actions1 = new Actions(driver);
+actions1.dragAndDropBy(resizable,200,150).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 SLIDE SLIDER   --------------------------------------------------------------------
 Actions action = new Actions(driver);
-		action.dragAndDropBy(LOCATION OF SLIDER,X,Y).perform();
+action.dragAndDropBy(LOCATION OF SLIDER,X,Y).perform();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
 PERFORM RIGHT CLICK    ------------------------------------------------------------
 action.contextClick(elementLocation).perform();
-
 if u do combination of actions use  -----> .build().perform();
 
 
@@ -131,15 +130,10 @@ action.keyDown(destinationArea, Keys.COMMAND).sendKeys("a").sendKeys("v").build(
 JavaScriptExecutor -----------------------------------------------------------------------
 String script = "return document.title";
 String title = (String) js.executeScript(script);     <----- TO GET TITLE
-
 js.executeScript("arguments[0].style.border='10px solid green'",ELEMENT LOCATION ) <---HIGH LIGHT ELEMENT
-
 js.executeScript("arguments[0].click();", element); <--- CLICK() BY JAVASCRIPT
-
 js.executeScript("alert('Welcome to Hell');");    <----GENERATE ALERT WINDOWS
-
 js.executeScript("window.scrollBy(0,600)");      <----Vertical scroll down by 600  pixels
-
 js.executeScript("window.location = 'U   R   L'");	<----NAVIGATE TO NEW PAGE
 
 
@@ -157,9 +151,16 @@ SSL_Certificate ----------------------------------------------------------------
 DesiredCapabilities dc = new DesiredCapabilities();
 dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
 dc.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,true);
-
 //profile for Chrome driver
 ChromeOptions cOptioon =new ChromeOptions();
 cOptioon.merge(dc);
 WebDriver driver = new ChromeDriver(cOptioon);
 driver.get("https://expired.badssl.com/");
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+AuthenticationPopup ----------------------------------------------------------------------
+//credential in this particular example - admin, pass - admin
+//original url:https://the-internet.herokuapp.com/basic_auth
+// we simply add https://admin:admin@the-internet.herokuapp.com/basic_auth
+driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
