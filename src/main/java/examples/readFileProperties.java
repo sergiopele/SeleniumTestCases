@@ -25,5 +25,7 @@ public class readFileProperties {
 		properties.setProperty("testData","Passed");
 		//with this comment
 		properties.store(outputStream,"my comments");
+		inputStream.close();
+		outputStream.close();
 	}
 }
