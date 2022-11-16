@@ -14,12 +14,10 @@ public class TableHandle {
 		WebDriver driver = new ChromeDriver();
 		
 		driver.get("https://www.techlistic.com/p/demo-selenium-practice.html");
-		List<WebElement>rows = driver.findElements(By.xpath("//tr[contains(@style,'box-sizing:')]"));
+		List<WebElement>rows = driver.findElements(By.xpath("//table[@id='customers']/tbody/tr/td"));
 		for (WebElement r:rows
 			 ) {
-			if(r.getText().contains("Google")){
-				System.out.println(r.getText());
-			}
+				System.out.println(r.getText()+" ");
 		}
 		
 		driver.quit();
