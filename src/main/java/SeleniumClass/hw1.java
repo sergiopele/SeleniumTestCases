@@ -1,53 +1,58 @@
 package main.java.SeleniumClass;
 
 import org.openqa.selenium.By;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.Actions;
 
-import java.util.ArrayList;
+
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import java.util.Properties;
+
+import static java.lang.System.*;
+
 
 public class hw1 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		System.setProperty("webdriver.chrome.driver", "/Users/sergiopele/Documents/extra_library_for_intellij/chromedriver");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp");
+		driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
 		
-		//navigate to google.com
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		String parentWindow = driver.getWindowHandle();
-		//click on "Help"
-		WebElement helpButton = driver.findElement(By.linkText("Help"));
-		helpButton.click();
-		//go back to parent	Window
-		driver.switchTo().window(parentWindow);
-		//click on "Privacy"
-		WebElement privacyButton = driver.findElement(By.linkText("Privacy"));
-		privacyButton.click();
+		WebElement loginBox = driver.findElement(By.id("txtUsername"));
+		loginBox.sendKeys(config("userName"));
+		WebElement passBox = driver.findElement(By.name("txtPassword"));
+		passBox.sendKeys(config("password"));
+		WebElement loginButton = driver.findElement(By.name("Submit"));
+		loginButton.click();
 		
-		ArrayList<String> windows = new ArrayList<>(driver.getWindowHandles());
-		driver.switchTo().window(windows.get(1));
+		WebElement pimCategory = driver.findElement(By.id("menu_pim_viewPimModule"));
+		pimCategory.click();
 		
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		WebElement community = driver.findElement(By.linkText("Community"));
-		community.click();
+		List<WebElement> IDs = driver.findElements(By.xpath("//div[@id='tableWrapper']/table/tbody/tr/td[2]"));
+		List<WebElement> checkBoxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
 		
-		driver.switchTo().window(windows.get(0));
-		WebElement usernameBox = driver.findElement(By.xpath("//input[@autocomplete='username']"));
-		usernameBox.sendKeys("It's me");
+		Actions scroller = new Actions(driver);
+		scroller.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).build().perform();
+		
+		for (int i = 0; i < IDs.size(); i++) {
+			if (IDs.get(i).getText().equalsIgnoreCase("34438833")) {
+				checkBoxes.get(i+1).click();
+				out.println("is NO 34438833 selected: "+checkBoxes.get(i+1).isSelected());
+			}
+		}
 		driver.quit();
-		
-		
-		
-		
-		
-		
-		
-		
+	}
+	
+	public static String config(String target) throws IOException {
+		Properties properties = new Properties();
+		FileInputStream inputStream = new FileInputStream("/Users/sergiopele/IdeaProjects/testCase/src/main/java/fileToRead/Test.property");
+		properties.load(inputStream);
+		return properties.get(target).toString();
 	}
 }

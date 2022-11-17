@@ -3,3 +3,5 @@
 testData=Passed
 browser=chrome
 url=https\://jenkov.com
+userName=admin
+password=Hum@nhrm123
