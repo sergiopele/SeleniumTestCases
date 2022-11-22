@@ -24,6 +24,7 @@ public class hw1 {
 		WebDriver driver = new ChromeDriver();
 		driver.get("http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login");
 		
+		
 		WebElement loginBox = driver.findElement(By.id("txtUsername"));
 		loginBox.sendKeys(config("userName"));
 		WebElement passBox = driver.findElement(By.name("txtPassword"));
@@ -49,7 +50,7 @@ public class hw1 {
 		driver.quit();
 	}
 	
-	public static String config(String target) throws IOException {
+	private static String config(String target) throws IOException {
 		Properties properties = new Properties();
 		FileInputStream inputStream = new FileInputStream("/Users/sergiopele/IdeaProjects/testCase/src/main/java/fileToRead/Test.property");
 		properties.load(inputStream);
