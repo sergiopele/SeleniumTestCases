@@ -141,6 +141,7 @@ js.executeScript("arguments[0].click();", element); <--- CLICK() BY JAVASCRIPT
 js.executeScript("alert('Welcome to Hell');");    <----GENERATE ALERT WINDOWS
 js.executeScript("window.scrollBy(0,600)");      <----Vertical scroll down by 600  pixels
 js.executeScript("window.location = 'U   R   L'");	<----NAVIGATE TO NEW PAGE
+js.executeScript("arguments[0].style.backgroundColor='blue'",locationelement);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

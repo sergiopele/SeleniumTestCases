@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class CommonMethods {
 	public static WebDriver driver;
 	
-	public static void setBrowser(String browser) {
+	public void setBrowser(String browser) {
 		if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "/Users/sergiopele/Documents/extra_library_for_intellij/chromedriver");
 			driver = new ChromeDriver();
@@ -23,13 +23,13 @@ public class CommonMethods {
 		}
 	}
 	
-	public static void openWithSpecUrl(String url) {
+	public void openWithSpecUrl(String url) {
 		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 	
-	public static void closeBrowser() {
+	public void closeBrowser() {
 		driver.quit();
 	}
 }
