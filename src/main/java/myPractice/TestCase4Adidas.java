@@ -1,4 +1,4 @@
-package main.java;
+package main.java.myPractice;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

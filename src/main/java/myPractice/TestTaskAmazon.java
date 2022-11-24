@@ -1,4 +1,4 @@
-package main.java;
+package main.java.myPractice;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
