@@ -199,5 +199,6 @@ outputStream.close();
 //////////////////////////////////////////////////////////////////////////////////////////
 FIND BROKEN IMG -------------------------------------------------------------------------
 List<WebElement>images = new LinkedList<>(driver.findElements(By.tagName("img")));
-if(w.getAttribute("naturalWidth").equals("0"))
+if(w.getAttribute("naturalWidth").equals("0")){
 System.out.println(w.getLocation());
+}

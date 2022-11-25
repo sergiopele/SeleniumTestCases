@@ -1,1 +1,6 @@
 url=http://hrm.syntaxtechs.net/humanresources/symfony/web/index.php/auth/login
+userName=admin
+password=Hum@nhrm123
+browser=edge
+negativeUserName=admin123
+negativePassword=Hum@nhrm

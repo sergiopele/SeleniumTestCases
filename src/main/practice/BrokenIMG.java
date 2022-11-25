@@ -17,7 +17,10 @@ public class BrokenIMG {
 		List<WebElement>images = new LinkedList<>(driver.findElements(By.tagName("img")));
 		int brokenImgCount=0;
 		for(WebElement w:images){
-			if(w.getAttribute("naturalWidth").equals("0")) brokenImgCount++;System.out.println(w.getLocation());
+			if(w.getAttribute("naturalWidth").equals("0")){
+				brokenImgCount++;
+				System.out.println(w.getLocation());
+			}
 		}
 		System.out.println("Number of broken img: "+brokenImgCount);
 		driver.quit();
