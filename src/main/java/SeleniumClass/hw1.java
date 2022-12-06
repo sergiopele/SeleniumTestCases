@@ -1,20 +1,18 @@
 package main.java.SeleniumClass;
 
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-import static java.lang.System.*;
+import static java.lang.System.out;
 
 
 public class hw1 {
@@ -35,20 +33,31 @@ public class hw1 {
 		WebElement pimCategory = driver.findElement(By.id("menu_pim_viewPimModule"));
 		pimCategory.click();
 		
-		List<WebElement> IDs = driver.findElements(By.xpath("//div[@id='tableWrapper']/table/tbody/tr/td[2]"));
-		List<WebElement> checkBoxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
-		
-		Actions scroller = new Actions(driver);
-		scroller.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).build().perform();
-		
-		for (int i = 0; i < IDs.size(); i++) {
-			if (IDs.get(i).getText().equalsIgnoreCase("34438833")) {
-				checkBoxes.get(i+1).click();
-				out.println("is NO 34438833 selected: "+checkBoxes.get(i+1).isSelected());
+		boolean elementIsNotFound = true;
+		while (elementIsNotFound) {
+			List<WebElement> IDs = driver.findElements(By.xpath("//div[@id='tableWrapper']/table/tbody/tr/td[2]"));
+			List<WebElement> checkBoxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
+			
+			Actions scroller = new Actions(driver);
+			scroller.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).build().perform();
+			
+			for (int i = 0; i < IDs.size(); i++) {
+				if (IDs.get(i).getText().equalsIgnoreCase("40882A")) {
+					checkBoxes.get(i + 1).click();
+					out.println("is NO 40882A selected: " + checkBoxes.get(i + 1).isSelected());
+					elementIsNotFound = false;
+					break;
+				}
 			}
+			if (elementIsNotFound) {
+				WebElement nextPageButton = driver.findElement(By.xpath("//a[text()='Next']"));
+				nextPageButton.click();
+			}
+			
 		}
 		driver.quit();
 	}
+	
 	
 	private static String config(String target) throws IOException {
 		Properties properties = new Properties();

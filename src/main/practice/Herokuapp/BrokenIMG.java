@@ -1,4 +1,4 @@
-package main.practice;
+package main.practice.Herokuapp;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
